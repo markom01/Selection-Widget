@@ -27,7 +27,7 @@ export function SelectedPreview({ selectedItems, onRemoveItem, onOpenSection, bu
           />
         ))}
       </Stack>
-      <Button variant="outlined" onClick={onOpenSection} ref={buttonRef}>
+      <Button variant="outlined" onClick={onOpenSection} ref={buttonRef} disableFocusRipple>
         {CONSTANTS.LABELS.CHANGE_BUTTON}
       </Button>
     </>

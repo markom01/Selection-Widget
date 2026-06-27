@@ -13,8 +13,13 @@ export function SelectionWidget() {
   const removeSelection = useSelectionStore((s) => s.removeSelection);
 
   const changeButtonRef = useRef<HTMLButtonElement>(null);
+  const isMounted = useRef(false);
 
   useEffect(() => {
+    if (!isMounted.current) {
+      isMounted.current = true;
+      return;
+    }
     if (!isSectionOpen && changeButtonRef.current) {
       changeButtonRef.current.focus();
     }
