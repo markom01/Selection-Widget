@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useRef, useEffect } from 'react';
 import { Box } from '@mui/material';
 import { useSelectionStore } from '../../store/selectionStore';
 import { SelectedPreview } from './SelectedPreview';

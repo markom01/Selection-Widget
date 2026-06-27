@@ -6,9 +6,10 @@ interface SelectedPreviewProps {
   readonly selectedItems: readonly ElementItem[];
   readonly onRemoveItem: (id: number) => void;
   readonly onOpenSection: () => void;
+  readonly buttonRef?: React.RefObject<HTMLButtonElement | null>;
 }
 
-export function SelectedPreview({ selectedItems, onRemoveItem, onOpenSection }: SelectedPreviewProps) {
+export function SelectedPreview({ selectedItems, onRemoveItem, onOpenSection, buttonRef }: SelectedPreviewProps) {
   return (
     <>
       <Typography variant="h5" sx={{ mb: 1 }}>
@@ -26,7 +27,7 @@ export function SelectedPreview({ selectedItems, onRemoveItem, onOpenSection }: 
           />
         ))}
       </Stack>
-      <Button variant="outlined" onClick={onOpenSection}>
+      <Button variant="outlined" onClick={onOpenSection} ref={buttonRef}>
         {CONSTANTS.LABELS.CHANGE_BUTTON}
       </Button>
     </>

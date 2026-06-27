@@ -55,16 +55,21 @@ export function ElementsList({
 
   if (filteredElements.length === 0) {
     return (
-      <Typography sx={{ p: 2, textAlign: 'center', color: 'text.secondary' }}>
-        {CONSTANTS.LABELS.NO_RESULTS_MESSAGE}
-      </Typography>
+      <Box sx={{ p: 2, textAlign: 'center' }}>
+        <Typography sx={{ color: 'text.secondary' }}>
+          {CONSTANTS.LABELS.NO_RESULTS_MESSAGE}
+        </Typography>
+        <Typography variant="body2" sx={{ mt: 1, color: 'text.secondary' }}>
+          {CONSTANTS.LABELS.NO_RESULTS_SUGGESTION}
+        </Typography>
+      </Box>
     );
   }
 
   return (
-    <Box sx={{ height: CONSTANTS.SECTION_MAX_HEIGHT, overflow: 'hidden' }}>
+    <Box sx={{ height: '100%', overflow: 'hidden' }}>
       <List
-        style={{ height: CONSTANTS.SECTION_MAX_HEIGHT, width: '100%' }}
+        style={{ height: '100%', width: '100%' }}
         rowCount={filteredElements.length}
         rowHeight={ROW_HEIGHT}
         rowProps={itemData}

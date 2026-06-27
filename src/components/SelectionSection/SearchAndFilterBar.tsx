@@ -8,6 +8,7 @@ interface SearchAndFilterBarProps {
   readonly filterValue: FilterValue;
   readonly onSearchChange: (query: string) => void;
   readonly onFilterChange: (value: FilterValue) => void;
+  readonly inputRef?: React.RefObject<HTMLInputElement | null>;
 }
 
 export function SearchAndFilterBar({
@@ -15,6 +16,7 @@ export function SearchAndFilterBar({
   filterValue,
   onSearchChange,
   onFilterChange,
+  inputRef,
 }: SearchAndFilterBarProps) {
   return (
     <Stack direction="row" spacing={2} sx={{ mb: 2 }}>
@@ -24,6 +26,7 @@ export function SearchAndFilterBar({
         placeholder={CONSTANTS.LABELS.SEARCH_PLACEHOLDER}
         value={searchQuery}
         onChange={(e) => onSearchChange(e.target.value)}
+        inputRef={inputRef}
         slotProps={{
           input: {
             startAdornment: <SearchIcon sx={{ mr: 1, color: 'action.active' }} />,
