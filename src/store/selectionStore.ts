@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import type { FilterValue, ElementItem, SelectionStore } from '../types';
+import type { FilterValue, SelectionStore } from '../types';
 import { CONSTANTS } from '../config/constants';
 
 export const useSelectionStore = create<SelectionStore>((set) => ({

@@ -1,12 +1,11 @@
-import React from 'react';
 import { Typography, Stack, Chip, Button } from '@mui/material';
 import type { ElementItem } from '../../types';
 import { CONSTANTS } from '../../config/constants';
 
 interface SelectedPreviewProps {
-  selectedItems: ElementItem[];
-  onRemoveItem: (id: number) => void;
-  onOpenSection: () => void;
+  readonly selectedItems: readonly ElementItem[];
+  readonly onRemoveItem: (id: number) => void;
+  readonly onOpenSection: () => void;
 }
 
 export function SelectedPreview({ selectedItems, onRemoveItem, onOpenSection }: SelectedPreviewProps) {
@@ -18,7 +17,7 @@ export function SelectedPreview({ selectedItems, onRemoveItem, onOpenSection }: 
       <Typography variant="body1" sx={{ mb: 2 }}>
         {CONSTANTS.LABELS.SELECTED_COUNT_PREFIX} {selectedItems.length} {CONSTANTS.LABELS.SELECTED_COUNT_SUFFIX}
       </Typography>
-      <Stack direction="row" gap={1} sx={{ flexWrap: 'wrap', mb: 2 }}>
+      <Stack direction="row" spacing={1} sx={{ flexWrap: 'wrap', mb: 2 }}>
         {selectedItems.map((item) => (
           <Chip
             key={item.id}

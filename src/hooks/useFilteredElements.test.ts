@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { renderHook, act } from '@testing-library/react';
 import { useFilteredElements } from './useFilteredElements';
-import type { ElementItem, FilterValue } from '../types';
+import type { ElementItem } from '../types';
 import { CONSTANTS } from '../config/constants';
 
 function generateTestElements(count: number): ElementItem[] {
@@ -47,7 +47,7 @@ describe('useFilteredElements', () => {
   it('returns empty when search and numeric filter exclude all items', () => {
     const elements = generateTestElements(100);
     const { result } = renderHook(() =>
-      useFilteredElements(elements, 'Element 50', 100 as FilterValue)
+      useFilteredElements(elements, 'Element 50', 100)
     );
 
     act(() => {
@@ -60,7 +60,7 @@ describe('useFilteredElements', () => {
   it('combines search and filter with AND logic', () => {
     const elements = generateTestElements(10000);
     const { result } = renderHook(() =>
-      useFilteredElements(elements, 'Element 5000', 2500 as FilterValue)
+      useFilteredElements(elements, 'Element 5000', 2500)
     );
 
     act(() => {

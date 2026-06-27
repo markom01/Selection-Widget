@@ -1,14 +1,13 @@
-import React from 'react';
 import { Stack, TextField, MenuItem } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import type { FilterValue } from '../../types';
 import { CONSTANTS } from '../../config/constants';
 
 interface SearchAndFilterBarProps {
-  searchQuery: string;
-  filterValue: FilterValue;
-  onSearchChange: (query: string) => void;
-  onFilterChange: (value: FilterValue) => void;
+  readonly searchQuery: string;
+  readonly filterValue: FilterValue;
+  readonly onSearchChange: (query: string) => void;
+  readonly onFilterChange: (value: FilterValue) => void;
 }
 
 export function SearchAndFilterBar({

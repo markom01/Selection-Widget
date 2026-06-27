@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   Typography,
   Stack,
@@ -12,10 +11,10 @@ import type { ElementItem } from '../../types';
 import { CONSTANTS } from '../../config/constants';
 
 interface SelectedPreviewSectionProps {
-  tempSelectedItems: ElementItem[];
-  onRemoveTempItem: (id: number) => void;
-  onSave: () => void;
-  onCancel: () => void;
+  readonly tempSelectedItems: readonly ElementItem[];
+  readonly onRemoveTempItem: (id: number) => void;
+  readonly onSave: () => void;
+  readonly onCancel: () => void;
 }
 
 export function SelectedPreviewSection({
@@ -35,7 +34,7 @@ export function SelectedPreviewSection({
         </IconButton>
       </Box>
 
-      <Stack direction="row" gap={1} sx={{ flexWrap: 'wrap', mb: 2 }}>
+      <Stack direction="row" spacing={1} sx={{ flexWrap: 'wrap', mb: 2 }}>
         {tempSelectedItems.map((item) => (
           <Chip
             key={item.id}

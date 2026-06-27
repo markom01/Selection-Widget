@@ -6,6 +6,6 @@
 import { CONSTANTS } from '../config/constants';
 
 export function extractNumber(element: string): number {
-  const match = element.match(CONSTANTS.NUMBER_EXTRACTION_REGEX);
-  return match ? parseInt(match[1], 10) : 0;
+  const match = CONSTANTS.NUMBER_EXTRACTION_REGEX.exec(element);
+  return match ? Number.parseInt(match[1], 10) : 0;
 }

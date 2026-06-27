@@ -54,7 +54,7 @@ describe('SearchAndFilterBar', () => {
     render(
       <SearchAndFilterBar
         searchQuery="Element 42"
-        filterValue="100"
+        filterValue={100}
         onSearchChange={() => {}}
         onFilterChange={() => {}}
       />

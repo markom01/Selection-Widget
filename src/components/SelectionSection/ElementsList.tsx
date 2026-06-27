@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { Box, Typography } from '@mui/material';
 import { List } from 'react-window';
 import type { RowComponentProps } from 'react-window';
@@ -7,54 +7,42 @@ import { CONSTANTS } from '../../config/constants';
 import { ElementRow } from './ElementRow';
 
 interface ElementsListProps {
-  filteredElements: ElementItem[];
-  tempSelectedIds: number[];
-  onToggleItem: (id: number) => void;
+  readonly filteredElements: readonly ElementItem[];
+  readonly tempSelectedIds: readonly number[];
+  readonly onToggleItem: (id: number) => void;
 }
 
 interface RowData {
-  items: ElementItem[];
-  selectedSet: Set<number>;
-  onToggleItem: (id: number) => void;
-  maxSelection: number;
+  readonly items: readonly ElementItem[];
+  readonly selectedSet: Set<number>;
+  readonly onToggleItem: (id: number) => void;
+  readonly maxSelection: number;
 }
 
 const ROW_HEIGHT = 48;
 
-const Row = React.memo<RowComponentProps<RowData>>(
-  ({ index, style, items, selectedSet, onToggleItem, maxSelection }) => {
-    const item = items[index];
-    const isSelected = selectedSet.has(item.id);
-    const isDisabled = selectedSet.size >= maxSelection && !isSelected;
+function Row({ index, style, items, selectedSet, onToggleItem, maxSelection }: RowComponentProps<RowData>) {
+  const item = items[index];
+  const isSelected = selectedSet.has(item.id);
+  const isDisabled = selectedSet.size >= maxSelection && !isSelected;
 
-    return (
-      <div style={style}>
-        <ElementRow
-          item={item}
-          isSelected={isSelected}
-          isDisabled={isDisabled}
-          onToggle={onToggleItem}
-        />
-      </div>
-    );
-  },
-);
-
-Row.displayName = 'VirtualRow';
+  return (
+    <div style={style}>
+      <ElementRow
+        item={item}
+        isSelected={isSelected}
+        isDisabled={isDisabled}
+        onToggle={onToggleItem}
+      />
+    </div>
+  );
+}
 
 export function ElementsList({
   filteredElements,
   tempSelectedIds,
   onToggleItem,
 }: ElementsListProps) {
-  if (filteredElements.length === 0) {
-    return (
-      <Typography sx={{ p: 2, textAlign: 'center', color: 'text.secondary' }}>
-        {CONSTANTS.LABELS.NO_RESULTS_MESSAGE}
-      </Typography>
-    );
-  }
-
   const itemData: RowData = useMemo(
     () => ({
       items: filteredElements,
@@ -65,11 +53,18 @@ export function ElementsList({
     [filteredElements, tempSelectedIds, onToggleItem],
   );
 
+  if (filteredElements.length === 0) {
+    return (
+      <Typography sx={{ p: 2, textAlign: 'center', color: 'text.secondary' }}>
+        {CONSTANTS.LABELS.NO_RESULTS_MESSAGE}
+      </Typography>
+    );
+  }
+
   return (
     <Box sx={{ height: CONSTANTS.SECTION_MAX_HEIGHT, overflow: 'hidden' }}>
       <List
-        height={CONSTANTS.SECTION_MAX_HEIGHT}
-        width="100%"
+        style={{ height: CONSTANTS.SECTION_MAX_HEIGHT, width: '100%' }}
         rowCount={filteredElements.length}
         rowHeight={ROW_HEIGHT}
         rowProps={itemData}
