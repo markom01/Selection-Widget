@@ -26,7 +26,7 @@ describe('SelectionWidget', () => {
   it('renders SelectedPreview with heading', () => {
     render(<SelectionWidget />);
     expect(
-      screen.getByRole('heading', { level: 5, name: /Select items/ })
+      screen.getByRole('heading', { level: 5, name: /Selected Items/ })
     ).toBeInTheDocument();
   });
 

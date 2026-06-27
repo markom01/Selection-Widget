@@ -14,7 +14,7 @@ describe('SelectedPreview', () => {
     render(
       <SelectedPreview selectedItems={[]} onRemoveItem={() => {}} onOpenSection={() => {}} />
     );
-    expect(screen.getByText('Select items')).toBeInTheDocument();
+    expect(screen.getByText('Selected Items')).toBeInTheDocument();
   });
 
   it('shows correct count', () => {
