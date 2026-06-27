@@ -78,18 +78,19 @@ Selection widget — React + TypeScript + Vite + MUI. Allows users to select up 
 
 ```bash
 npm run dev           # Start Vite dev server
-npm run build         # Production build
-npx vitest run        # Run unit tests (62 tests)
+npm run build         # TypeScript check + production build
+npx vitest run        # Run unit tests (70 tests)
 npx vitest            # Watch mode
-npx playwright test   # E2E tests (4 tests)
+npx playwright test   # E2E tests (5 tests)
 npx tsc --noEmit      # TypeScript check
+npx oxlint            # Lint (note: `npm run lint` calls ESLint — use `npx oxlint` instead)
 ```
 
 ## NOTES
 
-- **react-window v2 API**: Uses `rowComponent`/`rowProps` pattern (not v1 render prop). Parent MUST provide fixed height + `overflow: hidden` or the list renders all items.
+- **react-window v2 API**: Uses `rowComponent`/`rowProps` pattern (not v1 render prop). Parent MUST provide constrained height + `overflow: hidden` or the list renders all items. The List outer container has `overflow-y: auto` with `position: relative`.
 - **MUI Collapse** is used instead of Modal/Dialog for the expandable section.
 - **Draft buffer pattern**: `openSection()` copies `selectedItemIds` → `tempSelectedIds`. `cancelSelection()` discards buffer. `saveSelection()` commits.
 - **Max-3 enforcement**: `toggleTempSelection` silently rejects when `tempSelectedIds.length >= 3`. Unselected rows are disabled but selected rows stay enabled.
-- **Test gaps**: `useDebounce.ts` (untested in isolation), `App.tsx` (no component test) — covered only through integration/E2E.
+- **Test coverage**: 70 unit tests across 14 files. `useDebounce.ts` and `App.tsx` reached via dedicated unit tests (7 + 2 respectively). Remaining gaps covered through integration/E2E.
 - **E2E brittle pattern**: `e2e/widget.spec.ts` uses `waitForTimeout(400)` instead of explicit `waitFor` on expected elements — tolerable for stability but not best practice.

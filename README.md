@@ -40,9 +40,9 @@ Open [http://localhost:5173](http://localhost:5173).
 |---------|--------|
 | `npm run dev` | Start Vite dev server |
 | `npm run build` | TypeScript check + production build |
-| `npx vitest run` | Run 62 unit tests |
+| `npx vitest run` | Run 70 unit tests |
 | `npx vitest` | Watch mode |
-| `npx playwright test` | Run 4 E2E tests |
+| `npx playwright test` | Run 5 E2E tests |
 | `npx tsc --noEmit` | TypeScript type check |
 | `npx oxlint` | Lint (note: `npm run lint` calls ESLint — use `npx oxlint` instead) |
 

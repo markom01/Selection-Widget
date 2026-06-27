@@ -4,7 +4,7 @@ test.describe('Selection Widget E2E', () => {
   test('Scenario 1: full selection flow — select 3 items and save', async ({ page }) => {
     await page.goto('/');
 
-    await expect(page.getByRole('heading', { name: 'Select items' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Selected Items' })).toBeVisible();
     await expect(page.getByText('You currently have 0 selected items.')).toBeVisible();
 
     await page.getByRole('button', { name: 'Change my choice' }).click();
@@ -86,6 +86,28 @@ test.describe('Selection Widget E2E', () => {
 
     await expect(page.getByText('Element 300', { exact: true }).first()).not.toBeVisible();
     await expect(page.getByText('You currently have 0 selected items.')).toBeVisible();
+  });
+
+  test('Scenario 5: no page-level scroll — only list scrolls internally', async ({ page }) => {
+    await page.goto('/');
+
+    await expect(
+      page.evaluate(() => document.documentElement.scrollHeight <= document.documentElement.clientHeight)
+    ).resolves.toBe(true);
+
+    await page.getByRole('button', { name: 'Change my choice' }).click();
+    await page.getByPlaceholder('Search elements...').waitFor({ state: 'visible' });
+
+    await expect(
+      page.evaluate(() => document.documentElement.scrollHeight <= document.documentElement.clientHeight)
+    ).resolves.toBe(true);
+
+    const listScrolls = await page.evaluate(() => {
+      const listOuter = document.querySelector('[style*="position: relative"][style*="overflow-y"]');
+      if (!listOuter) return false;
+      return listOuter.scrollHeight > listOuter.clientHeight;
+    });
+    expect(listScrolls).toBe(true);
   });
 
   test('Scenario 4: filter + search combination', async ({ page }) => {
