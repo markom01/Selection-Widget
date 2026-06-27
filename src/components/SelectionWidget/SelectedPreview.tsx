@@ -18,7 +18,7 @@ export function SelectedPreview({ selectedItems, onRemoveItem, onOpenSection, bu
       <Typography variant="body1" sx={{ mb: 2 }}>
         {CONSTANTS.LABELS.SELECTED_COUNT_PREFIX} {selectedItems.length} {CONSTANTS.LABELS.SELECTED_COUNT_SUFFIX}
       </Typography>
-      <Stack direction="row" spacing={1} sx={{ flexWrap: 'wrap', mb: 2 }}>
+      <Stack direction="row" sx={{ flexWrap: 'wrap', gap: 1, mb: 2 }}>
         {selectedItems.map((item) => (
           <Chip
             key={item.id}

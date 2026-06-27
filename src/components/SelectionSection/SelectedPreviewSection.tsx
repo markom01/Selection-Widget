@@ -27,7 +27,7 @@ export function SelectedPreviewSection({
         {CONSTANTS.LABELS.CURRENT_SELECTED_LABEL}
       </Typography>
 
-      <Stack direction="row" spacing={1} sx={{ flexWrap: 'wrap', mb: 2 }}>
+      <Stack direction="row" sx={{ flexWrap: 'wrap', gap: 1, mb: 2 }}>
         {tempSelectedItems.map((item) => (
           <Chip
             key={item.id}
