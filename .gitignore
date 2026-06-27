@@ -30,6 +30,8 @@ dist-ssr
 # Testing
 coverage/
 .playwright/
+test-results/
+.playwright-mcp/
 
 # Project
 .sisyphus/
