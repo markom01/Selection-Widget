@@ -1,0 +1,27 @@
+export const CONSTANTS = {
+  MAX_SELECTION: 3,
+  NUMBER_OF_ELEMENTS: 10001,
+  DEBOUNCE_MS: 300,
+  ELEMENT_NAME_PREFIX: 'Element',
+  NUMBER_EXTRACTION_REGEX: /(\d+)$/,
+  FILTER_OPTIONS: [
+    { value: 'all' as const, label: 'No filter' },
+    { value: 100 as const, label: '> 100' },
+    { value: 2500 as const, label: '> 2500' },
+    { value: 10000 as const, label: '> 10000' },
+  ],
+  SECTION_MAX_HEIGHT: 400,
+  LABELS: {
+    SEARCH_PLACEHOLDER: 'Search elements...',
+    SECTION_HEADER: 'Select items',
+    CHANGE_BUTTON: 'Change my choice',
+    SAVE_BUTTON: 'Save',
+    CANCEL_BUTTON: 'Cancel',
+    SELECTED_COUNT_PREFIX: 'You currently have',
+    CURRENT_SELECTED_LABEL: 'Current selected items:',
+    NO_RESULTS_MESSAGE: 'No elements match your search',
+    SELECT_ITEMS_HEADING: 'Select items',
+    SELECTED_COUNT_SUFFIX: 'selected items.',
+    CLOSE_ARIA_LABEL: 'close',
+  },
+} as const;
