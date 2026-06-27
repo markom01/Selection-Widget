@@ -5,7 +5,7 @@ import { CONSTANTS } from '../config/constants';
 export const useSelectionStore = create<SelectionStore>((set) => ({
   allElements: [],
   selectedItemIds: [],
-  isSectionOpen: false,
+  isSectionOpen: true,
   tempSelectedIds: [],
   searchQuery: '',
   filterValue: 'all' as FilterValue,

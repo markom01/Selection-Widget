@@ -16,7 +16,7 @@ describe('App', () => {
     useSelectionStore.setState({
       allElements: [],
       selectedItemIds: [],
-      isSectionOpen: false,
+      isSectionOpen: true,
       tempSelectedIds: [],
       searchQuery: '',
       filterValue: 'all',

@@ -16,7 +16,7 @@ describe('SelectionWidget', () => {
     useSelectionStore.setState({
       allElements: mockAllElements,
       selectedItemIds: [],
-      isSectionOpen: false,
+      isSectionOpen: true,
       tempSelectedIds: [],
       searchQuery: '',
       filterValue: 'all',
@@ -45,11 +45,12 @@ describe('SelectionWidget', () => {
     expect(screen.getAllByText('Element 2').length).toBe(2);
   });
 
-  it('clicking "Change my choice" opens section', async () => {
+  it('clicking "Change my choice" toggles section closed when open', async () => {
+    useSelectionStore.setState({ isSectionOpen: true });
     const user = userEvent.setup();
     render(<SelectionWidget />);
     await user.click(screen.getByText('Change my choice'));
-    expect(useSelectionStore.getState().isSectionOpen).toBe(true);
+    expect(useSelectionStore.getState().isSectionOpen).toBe(false);
   });
 
   it('removing a chip calls removeSelection', async () => {

@@ -18,15 +18,15 @@ describe('SelectionSection', () => {
       allElements: mockElements,
       selectedItemIds: [],
       tempSelectedIds: [],
-      isSectionOpen: false,
+      isSectionOpen: true,
       searchQuery: '',
       filterValue: 'all',
     });
   });
 
-  it('renders collapsed by default', () => {
+  it('renders open by default', () => {
     const { container } = render(<SelectionSection />);
-    expect(useSelectionStore.getState().isSectionOpen).toBe(false);
+    expect(useSelectionStore.getState().isSectionOpen).toBe(true);
     expect(container.querySelector('.MuiCollapse-root')).toBeInTheDocument();
   });
 

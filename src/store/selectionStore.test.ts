@@ -4,7 +4,7 @@ import { useSelectionStore } from './selectionStore';
 const initialStoreState = {
   allElements: [],
   selectedItemIds: [],
-  isSectionOpen: false,
+  isSectionOpen: true,
   tempSelectedIds: [],
   searchQuery: '',
   filterValue: 'all' as const,
