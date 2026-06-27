@@ -72,6 +72,12 @@ e2e/                           # Playwright E2E tests
 - **Memo chain**: The virtualized row is `React.memo`'d. Derived data (filtered items, selected set) is wrapped in `useMemo` to minimize re-renders on toggle.
 - **Conventions**: Named exports only, MUI `sx` prop for all styling, all UI text from `CONSTANTS.LABELS`, co-located tests.
 
+## Performance
+
+[![Google PageSpeed Insights](https://img.shields.io/badge/PageSpeed-99%2F100%20%7C%20100%2F100%20%7C%20100%2F100%20%7C%20100%2F100-success)](https://pagespeed.web.dev/analysis/https-selection-widget-vercel-app/61b13agl1c?form_factor=mobile)
+
+Full PageSpeed report: [pagespeed.web.dev](https://pagespeed.web.dev/analysis/https-selection-widget-vercel-app/61b13agl1c?form_factor=mobile)
+
 ## License
 
 MIT
