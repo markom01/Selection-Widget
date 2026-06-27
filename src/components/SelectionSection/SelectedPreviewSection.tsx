@@ -3,10 +3,8 @@ import {
   Stack,
   Chip,
   Button,
-  IconButton,
   Box,
 } from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
 import type { ElementItem } from '../../types';
 import { CONSTANTS } from '../../config/constants';
 
@@ -25,14 +23,9 @@ export function SelectedPreviewSection({
 }: SelectedPreviewSectionProps) {
   return (
     <Box>
-      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 1 }}>
-        <Typography variant="subtitle1">
-          {CONSTANTS.LABELS.CURRENT_SELECTED_LABEL}
-        </Typography>
-        <IconButton size="small" onClick={onCancel} aria-label={CONSTANTS.LABELS.CLOSE_ARIA_LABEL}>
-          <CloseIcon />
-        </IconButton>
-      </Box>
+      <Typography variant="subtitle1" sx={{ mb: 1 }}>
+        {CONSTANTS.LABELS.CURRENT_SELECTED_LABEL}
+      </Typography>
 
       <Stack direction="row" spacing={1} sx={{ flexWrap: 'wrap', mb: 2 }}>
         {tempSelectedItems.map((item) => (

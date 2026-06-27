@@ -82,21 +82,6 @@ describe('SelectedPreviewSection', () => {
     expect(onCancel).toHaveBeenCalled();
   });
 
-  it('Close (X) button calls onCancel', async () => {
-    const onCancel = vi.fn();
-    const user = userEvent.setup();
-    render(
-      <SelectedPreviewSection
-        tempSelectedItems={mockItems}
-        onRemoveTempItem={() => {}}
-        onSave={() => {}}
-        onCancel={onCancel}
-      />
-    );
-    await user.click(screen.getByLabelText('close'));
-    expect(onCancel).toHaveBeenCalled();
-  });
-
   it('Save button is disabled when no items selected', () => {
     render(
       <SelectedPreviewSection
